@@ -10,13 +10,26 @@ namespace CTL.Migration
     {
         public new uint version = %%Version%%;
 
+        /// <summary>
+        /// defaults for a save of V%%Version%%
+        /// </summary>
         public SaveV%%Version%%() : base()
         {
+            
+        }
+
+        /// <summary>
+        /// creates a save of V%%Version%% from V%%Version - 1%%
+        /// </summary>
+        public SaveV%%Version%%(SaveV%%Version - 1%% prev) : this()
+        {
+            this.version = %%Version%%;
+            // load data
         }
 
         public new static ISaveFileVersion Read(BinaryReader reader)
         {
-            SaveV%%Version%% result = ((SaveV%%Version - 1%%;)SaveV%%Version - 1%%.Read(reader)).MigrateToNext();
+            SaveV%%Version%% result = new SaveV%%Version%%((SaveV%%Version - 1%%)base.Read(reader));
 
             return result;
         }
@@ -25,6 +38,7 @@ namespace CTL.Migration
         {
             base.Load();
         }
+        
         public override void Write(BinaryWriter writer)
         {
             base.Write(writer);

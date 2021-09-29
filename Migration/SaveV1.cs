@@ -38,6 +38,7 @@ namespace CTL.Migration
             this.currency = prev.currency;
             this.maxCurrency = prev.maxCurrency;
         }
+
         public SaveV1() : base()
         {
             version = 1;
