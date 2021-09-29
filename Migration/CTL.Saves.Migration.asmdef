@@ -1,0 +1,18 @@
+{
+    "name": "CTL.Migration",
+    "rootNamespace": "CTL.Migration",
+    "references": [
+        "GUID:76e96e5e40aa57fb8ae45183a9bba9ad",
+        "GUID:ae0396a7f83346d8488537c60b6a3789",
+        "GUID:ac7e3cdce21c1c26284b1f89b7417048"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

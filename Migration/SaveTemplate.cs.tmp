@@ -1,0 +1,38 @@
+using System.Collections;
+using System.IO;
+using System.Collections.Generic;
+using UnityEngine;
+using CTL.Core;
+
+namespace CTL.Migration
+{
+    public class SaveV%%Version%% : SaveV%%Version - 1%%
+    {
+        public new uint version = %%Version%%;
+
+        public SaveV%%Version%%() : base()
+        {
+        }
+
+        public new static ISaveFileVersion Read(BinaryReader reader)
+        {
+            SaveV%%Version%% result = ((SaveV%%Version - 1%%;)SaveV%%Version - 1%%.Read(reader)).MigrateToNext();
+
+            return result;
+        }
+
+        public override void Load()
+        {
+            base.Load();
+        }
+        public override void Write(BinaryWriter writer)
+        {
+            base.Write(writer);
+        }
+
+        public override void UpdateSave()
+        {
+            base.UpdateSave();
+        }
+    }
+}
