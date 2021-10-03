@@ -2,9 +2,8 @@
     "name": "CTL.Migration",
     "rootNamespace": "CTL.Migration",
     "references": [
-        "GUID:76e96e5e40aa57fb8ae45183a9bba9ad",
-        "GUID:ae0396a7f83346d8488537c60b6a3789",
-        "GUID:ac7e3cdce21c1c26284b1f89b7417048"
+        "GUID:e16578a517e2ba48ab37b20ec8949d82",
+        "GUID:eca5f2c5aa12da4c6bb3b969a70fed01"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

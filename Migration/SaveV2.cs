@@ -1,7 +1,6 @@
 using System.Collections;
 using System.IO;
 using System.Collections.Generic;
-using UnityEngine;
 using CTL.Core;
 using System;
 using CTL.Input;
@@ -29,6 +28,7 @@ namespace CTL.Migration
             this.pp = prev.pp;
             this.upgrades = prev.upgrades;
         }
+
         public override ISaveFileVersion Read(BinaryReader reader)
         {
             SaveV2 result = new SaveV2((SaveV1)base.Read(reader));

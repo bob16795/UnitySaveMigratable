@@ -1,7 +1,6 @@
 using System.Collections;
 using System.IO;
 using System.Collections.Generic;
-using UnityEngine;
 using CTL.Core;
 using System;
 
@@ -35,6 +34,7 @@ namespace CTL.Migration
         public SaveV1(SaveV0 prev) : this()
         {
             this.version = 2;
+            this.themeId = prev.themeId;
             this.currency = prev.currency;
             this.maxCurrency = prev.maxCurrency;
         }
@@ -49,10 +49,11 @@ namespace CTL.Migration
                 new UpgradeSave(2, 450, 30, 0),
                 new UpgradeSave(3, 0, 0, 0),
                 new UpgradeSave(4, 5, 0, 0),
-                new UpgradeSave(5, 20, 0, 0),
+                new UpgradeSave(5, 10, 0, 0),
                 new UpgradeSave(6, 50, 0, 0),
                 new UpgradeSave(7, 100, 0, 0),
-                new UpgradeSave(8, 1000, 0, 0)
+                new UpgradeSave(8, 1000, 0, 0),
+                new UpgradeSave(9, 2000, 0, 0)
             };
             pp = 0;
         }
@@ -65,9 +66,12 @@ namespace CTL.Migration
             {
                 UpgradeSave upgradeSave = new UpgradeSave();
                 upgradeSave.id = reader.ReadInt32();
+                var precost = upgradeSave.cost;
                 upgradeSave.cost = reader.ReadDouble();
                 upgradeSave.adds = reader.ReadDouble();
                 upgradeSave.level = reader.ReadInt32();
+                if (upgradeSave.level == 0) upgradeSave.cost = precost;
+
                 result.upgrades.Add(upgradeSave);
             }
             result.pp = reader.ReadInt32();
@@ -77,7 +81,7 @@ namespace CTL.Migration
         public override void Load()
         {
             base.Load();
-            foreach (var upgrade in upgrades)
+            foreach (UpgradeSave upgrade in upgrades)
             {
                 Upgrades.instance.Setup(upgrade.id, upgrade.adds, upgrade.cost, upgrade.level);
             }

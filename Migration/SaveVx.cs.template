@@ -27,7 +27,7 @@ namespace CTL.Migration
             // load data
         }
 
-        public new static ISaveFileVersion Read(BinaryReader reader)
+        public override ISaveFileVersion Read(BinaryReader reader)
         {
             SaveV%%Version%% result = new SaveV%%Version%%((SaveV%%Version - 1%%)base.Read(reader));
 

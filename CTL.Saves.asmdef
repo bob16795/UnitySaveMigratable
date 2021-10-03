@@ -2,7 +2,7 @@
     "name": "CTL.Saves",
     "rootNamespace": "CTL.Saves",
     "references": [
-        "CTL.Migration"
+        "GUID:3f92f4ae19a25d0689a6bf57bf12a336"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

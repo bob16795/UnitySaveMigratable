@@ -12,7 +12,7 @@ namespace CTL.Saves
         bool first_load = false;
         static string SAVE_PATH;
 
-        private SaveV2 save;
+        private SaveV3 save;
 
         /// <summary>
         /// read the save
@@ -40,16 +40,19 @@ namespace CTL.Saves
                     case 2:
                         tempSave = new SaveV2().Read(reader);
                         break;
+                    case 3:
+                        tempSave = new SaveV3().Read(reader);
+                        break;
                     default:
-                        tempSave = new SaveV2();
+                        tempSave = new SaveV3();
                         break;
                 }
                 tempSave.version = version;
-                save = (SaveV2)MigrationManager.Migrate(tempSave);
+                save = (SaveV3)MigrationManager.Migrate(tempSave);
             }
             else
             {
-                save = new SaveV2();
+                save = new SaveV3();
                 Write();
             }
         }
@@ -64,7 +67,7 @@ namespace CTL.Saves
             using (FileStream fw = File.OpenWrite(SAVE_PATH))
             {
                 BinaryWriter writer = new BinaryWriter(fw);
-                writer.Write(2);
+                writer.Write(save.version);
                 save.Write(writer);
                 return writer;
             }

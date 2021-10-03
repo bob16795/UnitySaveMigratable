@@ -12,7 +12,9 @@ with:
 ```cs
 private SaveVx save;
 ```
-add save read to switch in read
+
+and add save read to switch in read
+
 7. edit MigrationManager.cs
 add to the else thing
 ```cs
